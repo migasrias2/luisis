@@ -1,71 +1,35 @@
-# React + Vite + shadcn/ui Template
+# Isis & Luís · 15.08.2026
 
-A modern web application template using React, TypeScript, Vite, shadcn/ui components, and Tailwind CSS.
+Site do casamento — lista de presentes com contribuições por cartão (Stripe), IBAN, MB Way e Revolut.
 
-## Technologies
+Construído com React + Vite + Tailwind CSS. Design, cores, fontes e fotografias baseados no moodboard do casamento (Clube + Estufa Monsanto, Lisboa).
 
-This template includes:
+## Antes de publicar
 
-- [Vite](https://vitejs.dev/) - Next-generation frontend tooling
-- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
-- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+1. **Dados de pagamento manual** — em `src/pages/Index.tsx`, substituir:
+   - `[IBAN_AQUI]` → IBAN completo
+   - `[TITULAR_AQUI]` → nome do titular da conta
+   - `[MBWAY_AQUI]` → número associado ao MB Way
+   - `[REVOLUT_AQUI]` → @revtag ou link revolut.me/...
 
-## Getting Started
+2. **Stripe (pagamentos por cartão)**:
+   - Criar conta em [stripe.com](https://stripe.com) e copiar a **chave secreta** (Dashboard → Developers → API keys)
+   - No Netlify: Site configuration → Environment variables → adicionar `STRIPE_SECRET_KEY`
+   - A função `netlify/functions/create-checkout-session.mts` cria a sessão de checkout no caminho `/api/create-checkout-session` — não precisa de mais nada
+   - Testar primeiro com a chave `sk_test_...` e o cartão de teste `4242 4242 4242 4242`; trocar para `sk_live_...` quando estiver tudo bem
+   - Sem a chave configurada, o site continua a funcionar: o botão de cartão mostra um aviso e os convidados usam IBAN/MB Way/Revolut
 
-### STEP 1 Option A (Recommended) ⭐
-Use GitHub's template feature to create your project:
-1. Click the "Use this template" button above
-2. Select "Create a new repository"
-3. Choose your repository name and settings
-4. Click "Create repository from template"
+## Desenvolvimento
 
-### STEP 1 Option B (Alternative)
-If you prefer to start manually:
-```sh
-# Clone the template repository
-git clone https://github.com/bobby-io/react-vite-shadcn-template
-cd react-vite-shadcn-template
-
-# Remove the existing git history
-rm -rf .git
-
-# Initialize as a fresh git repository
-git init
-```
-
-### STEP 2 - Next Steps (Required)
-1. Install dependencies:
 ```sh
 npm install
+npm run dev           # site em http://localhost:8080 (sem a função Stripe)
+npx netlify dev       # site + função Stripe em local (lê STRIPE_SECRET_KEY de um ficheiro .env)
 ```
 
-2. Start the development server:
-```sh
-npm run dev
-```
+## Deploy (Netlify)
 
-This will give you a fresh start with your own repository while maintaining all the template's features and configurations.
+O `netlify.toml` já define o build (`npm run build` → `dist`), o redirect de SPA e a pasta de funções é detetada automaticamente.
 
-## Development
-
-- Run development server: `npm run dev`
-- Build for production: `npm run build`
-- Preview production build: `npm run preview`
-
-## Customization
-
-- Update the configuration in `vite.config.ts` to customize your build
-- Modify theme settings in `tailwind.config.js`
-- Add or modify components in the `src/components` directory
-- Update global styles in `src/index.css`
-
-## Deployment
-
-This template can be deployed to various platforms:
-
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-- [GitHub Pages](https://pages.github.com/)
-- Any other platform that supports static site hosting
+- **Via GitHub (recomendado):** fazer push do repositório e "Import from Git" no Netlify — cada push publica automaticamente.
+- **Via CLI:** `npx netlify deploy --prod`

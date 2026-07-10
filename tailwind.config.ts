@@ -13,7 +13,13 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        sans: ["Poppins", "system-ui", "sans-serif"],
+        script: ["Sacramento", "cursive"],
+      },
       colors: {
+        taupe: "hsl(var(--taupe))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
