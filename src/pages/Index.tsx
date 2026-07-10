@@ -357,6 +357,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Localização */}
+      <section id="local" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <Reveal>
+          <SectionTitle script="o" title="Local" />
+          <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
+            Clube + Estufa Monsanto · Lisboa
+          </p>
+        </Reveal>
+        <Reveal className="mt-12">
+          <div className="overflow-hidden rounded-md border border-border">
+            <iframe
+              title="Mapa — Estufa, Tazte Secret Spot, Monsanto · Lisboa"
+              src="https://maps.google.com/maps?q=38.7388913,-9.1887904&z=16&output=embed"
+              className="h-[380px] w-full md:h-[460px]"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.google.com/maps/place/Estufa+-+Tazte+Secret+Spot/@38.7388913,-9.1887904,17z/data=!3m1!4b1!4m6!3m5!1s0xd1933617d815017:0x6db2d739047a3940!8m2!3d38.7388913!4d-9.1887904"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-md border border-foreground/30 px-6 py-3 text-xs uppercase tracking-[0.15em] transition-colors hover:bg-foreground hover:text-background"
+            >
+              Abrir no Google Maps
+            </a>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Footer */}
       <footer className="px-6 py-16 text-center">
         <Reveal>
