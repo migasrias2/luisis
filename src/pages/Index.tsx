@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
 import heroCasal from "@/assets/wedding/hero-casal.jpg";
-import venue from "@/assets/wedding/venue.jpg";
+import presente from "@/assets/wedding/presente.jpg";
 
 import fundoLuaDeMel from "@/assets/wedding/fundos/lua-de-mel.jpg";
 import fundoCasaNova from "@/assets/wedding/fundos/casa-nova.jpg";
@@ -15,20 +15,18 @@ import fundoAventuras from "@/assets/wedding/fundos/aventuras.jpg";
    PARA EDITAR ANTES DE PUBLICAR:
      [IBAN_AQUI]     → IBAN completo
      [TITULAR_AQUI]  → Nome do titular da conta
-     [MBWAY_AQUI]    → Número de telemóvel associado ao MB Way
-     [REVOLUT_AQUI]  → @revtag ou link revolut.me/...
-   Para ativar pagamentos por cartão (Stripe), ver README.md.
+   Para ativar pagamentos online (Stripe), ver README.md.
    ──────────────────────────────────────────────────────────── */
 const IBAN = "[IBAN_AQUI]";
 const TITULAR = "[TITULAR_AQUI]";
-const MBWAY = "[MBWAY_AQUI]";
-const REVOLUT = "[REVOLUT_AQUI]";
+const MBWAY_ISIS = "960 232 161";
+const MBWAY_LUIS = "912 338 222";
 
 const FUNDS = [
   {
     name: "Lua de Mel",
     description:
-      "Ainda hesitamos entre a Turquia, o México e Bali — o vosso contributo ajuda a decidir mais cedo (e a viagem a ser ainda melhor).",
+      "O destino é segredo, mas a viagem está a ser planeada com todo o cuidado. O vosso contributo ajuda a torná-la ainda mais especial.",
     image: fundoLuaDeMel,
   },
   {
@@ -50,20 +48,20 @@ const FUNDS = [
     image: fundoExperiencia,
   },
   {
-    name: "Vinho & Celebrações",
+    name: "Celebrações",
     description:
-      "Para os jantares e celebrações que ainda vamos ter — um copo (ou garrafa) à vossa saúde.",
+      "Porque a vida a dois está cheia de motivos para celebrar. O vosso contributo fica reservado para os momentos que merecem ser especiais.",
     image: fundoVinho,
   },
   {
-    name: "Aventuras Futuras",
+    name: "Explorar o Mundo",
     description:
-      "Para as viagens e escapadinhas que virão depois da lua de mel — porque uma só nunca chega.",
+      "Porque há sempre um novo lugar a descobrir, uma cidade que ainda não conhecemos, uma viagem que ainda não fizemos.",
     image: fundoAventuras,
   },
 ];
 
-const PRESET_AMOUNTS = [25, 50, 100, 200];
+const PRESET_AMOUNTS = [50, 100, 200, 250];
 
 function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -137,7 +135,7 @@ function CopyCard({ label, value, sub }: { label: string; value: string; sub?: s
 }
 
 function ContributeForm() {
-  const [fund, setFund] = useState(FUNDS[2].name); // "Brinde à Nova Vida" — sem destino certo
+  const [fund, setFund] = useState(FUNDS[0].name); // "Lua de Mel" — fundo por defeito
   const [amount, setAmount] = useState<number | "">(50);
   const [custom, setCustom] = useState("");
   const [loading, setLoading] = useState(false);
@@ -163,7 +161,7 @@ function ContributeForm() {
     } catch (err) {
       console.error(err);
       toast.error(
-        "O pagamento por cartão não está disponível de momento. Podem usar o IBAN, MB Way ou Revolut abaixo.",
+        "O pagamento online não está disponível de momento. Podem usar o IBAN ou MB Way abaixo.",
       );
       setLoading(false);
     }
@@ -221,7 +219,7 @@ function ContributeForm() {
         disabled={loading}
         className="w-full rounded-md bg-foreground px-6 py-4 text-xs uppercase tracking-[0.25em] text-background transition-opacity hover:opacity-85 disabled:opacity-50"
       >
-        {loading ? "A preparar o pagamento…" : "Contribuir com cartão"}
+        {loading ? "A preparar o pagamento…" : "Contribuir Online"}
       </button>
       <p className="mt-3 text-center text-xs text-muted-foreground">
         Pagamento seguro processado pela Stripe.
@@ -262,7 +260,10 @@ const Index = () => {
             <div className="mx-auto mb-8 h-px w-24 bg-white/70" />
             <p className="heading-caps text-sm tracking-[0.3em] md:text-base">15 . 08 . 2026</p>
             <p className="heading-caps mt-2 text-sm tracking-[0.3em] md:text-base">
-              Clube + Estufa Monsanto · Lisboa
+              Basílica da Estrela
+            </p>
+            <p className="heading-caps mt-1 text-sm tracking-[0.3em] md:text-base">
+              Estufa · Tazte Secret Spot
             </p>
           </Reveal>
         </div>
@@ -272,8 +273,8 @@ const Index = () => {
       <section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-20 md:grid-cols-2 md:gap-16 md:py-28">
         <Reveal>
           <img
-            src={venue}
-            alt="O espaço do casamento"
+            src={presente}
+            alt="Estufa · Tazte Secret Spot ao pôr do sol"
             className="mx-auto aspect-[3/4] w-full max-w-md rounded-md object-cover"
           />
         </Reveal>
@@ -333,8 +334,8 @@ const Index = () => {
           <Reveal>
             <SectionTitle script="como" title="Contribuir" />
             <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-              Escolham um fundo e um valor — o pagamento é feito com cartão, de forma segura. Se
-              preferirem transferência, mais abaixo encontram o IBAN, MB Way e Revolut.
+              Podem contribuir online de forma rápida e segura, com Apple Pay, Google Pay, MB Way ou
+              cartão bancário.
             </p>
           </Reveal>
           <Reveal className="mt-10">
@@ -343,12 +344,12 @@ const Index = () => {
 
           <Reveal className="mt-14">
             <p className="mb-4 text-center text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-              Ou por transferência
+              Ou, se preferirem transferir manualmente
             </p>
             <div className="mx-auto grid max-w-2xl gap-3">
               <CopyCard label="IBAN" value={IBAN} sub={`Titular: ${TITULAR}`} />
-              <CopyCard label="MB WAY" value={MBWAY} />
-              <CopyCard label="Revolut" value={REVOLUT} />
+              <CopyCard label="MB Way — Isis" value={MBWAY_ISIS} />
+              <CopyCard label="MB Way — Luís" value={MBWAY_LUIS} />
             </div>
             <p className="mt-4 text-center text-xs text-muted-foreground">
               Podem indicar o fundo na referência da transferência, mas não é obrigatório.
@@ -362,7 +363,7 @@ const Index = () => {
         <Reveal>
           <SectionTitle script="o" title="Local" />
           <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-            Clube + Estufa Monsanto · Lisboa
+            Estufa · Tazte Secret Spot
           </p>
         </Reveal>
         <Reveal className="mt-12">
