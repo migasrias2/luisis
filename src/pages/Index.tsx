@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
+import SiteHeader from "@/components/SiteHeader";
+
 import heroCasal from "@/assets/wedding/hero-casal.jpg";
 import presente from "@/assets/wedding/presente.jpg";
 
@@ -8,17 +10,10 @@ import fundoLuaDeMel from "@/assets/wedding/fundos/lua-de-mel.jpg";
 import fundoCasaNova from "@/assets/wedding/fundos/casa-nova.jpg";
 import fundoBrinde from "@/assets/wedding/fundos/brinde.jpg";
 import fundoExperiencia from "@/assets/wedding/fundos/experiencia-a-dois.jpg";
-import fundoVinho from "@/assets/wedding/fundos/vinho.jpg";
-import fundoAventuras from "@/assets/wedding/fundos/aventuras.jpg";
 
-/* ────────────────────────────────────────────────────────────
-   PARA EDITAR ANTES DE PUBLICAR:
-     [IBAN_AQUI]     → IBAN completo
-     [TITULAR_AQUI]  → Nome do titular da conta
-   Para ativar pagamentos online (Stripe), ver README.md.
-   ──────────────────────────────────────────────────────────── */
-const IBAN = "[IBAN_AQUI]";
-const TITULAR = "[TITULAR_AQUI]";
+/* Dados de pagamento manual */
+const IBAN_PT = "PT50 0033 0000 4549 6520 0340 5";
+const IBAN_LT = "LT91 3250 0511 8767 2782";
 const MBWAY_ISIS = "960 232 161";
 const MBWAY_LUIS = "912 338 222";
 
@@ -26,38 +21,26 @@ const FUNDS = [
   {
     name: "Lua de Mel",
     description:
-      "O destino é segredo, mas a viagem está a ser planeada com todo o cuidado. O vosso contributo ajuda a torná-la ainda mais especial.",
+      "A nossa lua de mel será na Turquia. O vosso contributo irá ajudar-nos a tornar esta viagem ainda mais especial e criar memórias inesquecíveis.",
     image: fundoLuaDeMel,
   },
   {
     name: "Casa Nova",
     description:
-      "Vamos começar a próxima fase com casa nova — um empurrão para mobília, equipamento e tudo o que torna um espaço verdadeiramente nosso.",
+      "Um contributo para transformar a nossa casa num verdadeiro lar, ajudando na mobília, detalhes e tudo aquilo que fará parte da nossa nova vida.",
     image: fundoCasaNova,
   },
   {
-    name: "Brinde à Nova Vida",
+    name: "Experiências a Dois",
     description:
-      "Para quem preferir contribuir sem destino certo. Vai direto à fase que se segue, seja ela qual for.",
-    image: fundoBrinde,
-  },
-  {
-    name: "Experiência a Dois",
-    description:
-      "Jantares, passeios, pequenos luxos do dia a dia — momentos que não cabem numa lista, mas que vamos lembrar.",
+      "Jantares, viagens, passeios e pequenos momentos que vamos guardar para sempre.",
     image: fundoExperiencia,
   },
   {
-    name: "Celebrações",
+    name: "Brindar ao Futuro",
     description:
-      "Porque a vida a dois está cheia de motivos para celebrar. O vosso contributo fica reservado para os momentos que merecem ser especiais.",
-    image: fundoVinho,
-  },
-  {
-    name: "Explorar o Mundo",
-    description:
-      "Porque há sempre um novo lugar a descobrir, uma cidade que ainda não conhecemos, uma viagem que ainda não fizemos.",
-    image: fundoAventuras,
+      "Para quem preferir contribuir sem destino certo. Um gesto que nos acompanhará nesta nova fase e em todos os momentos especiais que ainda vamos viver juntos.",
+    image: fundoBrinde,
   },
 ];
 
@@ -104,6 +87,15 @@ function SectionTitle({ script, title }: { script: string; title: string }) {
   );
 }
 
+function OptionHeading({ number, title }: { number: number; title: string }) {
+  return (
+    <div className="text-center">
+      <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">Opção {number}</p>
+      <h3 className="heading-caps mt-2 text-xl font-medium tracking-[0.14em] md:text-2xl">{title}</h3>
+    </div>
+  );
+}
+
 function CopyCard({ label, value, sub }: { label: string; value: string; sub?: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -121,7 +113,7 @@ function CopyCard({ label, value, sub }: { label: string; value: string; sub?: s
     <div className="flex items-center justify-between gap-4 rounded-md border border-border bg-card px-5 py-4">
       <div className="min-w-0">
         <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{label}</span>
-        <div className="truncate font-medium">{value}</div>
+        <div className="break-words font-medium">{value}</div>
         {sub && <div className="text-sm text-muted-foreground">{sub}</div>}
       </div>
       <button
@@ -240,6 +232,8 @@ const Index = () => {
 
   return (
     <main>
+      <SiteHeader />
+
       {/* Hero */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         <img
@@ -269,34 +263,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Intro / o vosso presente */}
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-20 md:grid-cols-2 md:gap-16 md:py-28">
-        <Reveal>
-          <img
-            src={presente}
-            alt="Estufa · Tazte Secret Spot ao pôr do sol"
-            className="mx-auto aspect-[3/4] w-full max-w-md rounded-md object-cover"
-          />
-        </Reveal>
-        <Reveal>
-          <div className="flex items-baseline gap-3">
-            <span className="script">o vosso</span>
-            <h2 className="heading-caps text-3xl font-medium md:text-4xl">Presente</h2>
+      {/* O nosso próximo capítulo */}
+      <section
+        id="proximo-capitulo"
+        className="relative flex min-h-[70vh] scroll-mt-20 items-center justify-center overflow-hidden"
+      >
+        <img
+          src={presente}
+          alt="Estufa · Tazte Secret Spot ao pôr do sol"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <Reveal className="relative mx-auto max-w-2xl px-6 py-24 text-center text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
+          <div className="flex items-baseline justify-center gap-3">
+            <span className="script text-white/90">o nosso</span>
+            <h2 className="heading-caps text-3xl font-medium md:text-4xl">Próximo Capítulo</h2>
           </div>
-          <p className="mt-6 leading-relaxed text-foreground/80">
-            Decidimos continuar o resto do caminho a dois. Se quiserem fazer parte deste capítulo
-            com um presente, preferimos ajudar a construir o que vem a seguir do que encher mais
-            uma gaveta.
-          </p>
-          <p className="mt-4 leading-relaxed text-foreground/80">
-            Sem reservas, sem listas — escolham a forma que for mais fácil, e qualquer contributo é
-            bem-vindo tal como chega.
+          <p className="mt-6 leading-relaxed text-white/90">
+            Decidimos continuar o resto do caminho a dois e começar uma nova fase juntos. Se
+            quiserem fazer parte deste capítulo, criámos algumas opções onde o vosso carinho poderá
+            ajudar-nos a criar novas memórias e construir o nosso futuro.
           </p>
         </Reveal>
       </section>
 
       {/* Fundos */}
-      <section id="fundos" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <section id="fundos" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 md:py-28">
         <Reveal>
           <SectionTitle script="os nossos" title="Fundos" />
           <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
@@ -328,38 +320,57 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contribuir com cartão (Stripe) */}
-      <section id="contribuir" className="bg-secondary/50 px-6 py-20 md:py-28">
+      {/* Como contribuir */}
+      <section id="contribuir" className="scroll-mt-20 bg-secondary/50 px-6 py-20 md:py-28">
         <div className="mx-auto max-w-4xl">
           <Reveal>
             <SectionTitle script="como" title="Contribuir" />
             <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-              Podem contribuir online de forma rápida e segura, com Apple Pay, Google Pay, MB Way ou
-              cartão bancário.
+              Escolham a forma que for mais fácil — qualquer contributo é bem-vindo.
             </p>
-          </Reveal>
-          <Reveal className="mt-10">
-            <ContributeForm />
           </Reveal>
 
-          <Reveal className="mt-14">
-            <p className="mb-4 text-center text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-              Ou, se preferirem transferir manualmente
+          {/* Opção 1 — Contribuir Online */}
+          <Reveal className="mt-16">
+            <OptionHeading number={1} title="Contribuir Online" />
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
+              Podem contribuir online de forma simples e segura através de Apple Pay, MB Way ou
+              cartão bancário.
             </p>
-            <div className="mx-auto grid max-w-2xl gap-3">
-              <CopyCard label="IBAN" value={IBAN} sub={`Titular: ${TITULAR}`} />
+            <div className="mt-8">
+              <ContributeForm />
+            </div>
+          </Reveal>
+
+          {/* Opção 2 — Transferência Bancária */}
+          <Reveal className="mt-16">
+            <OptionHeading number={2} title="Transferência Bancária" />
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
+              Caso prefiram, podem contribuir através de transferência bancária para um dos
+              seguintes IBAN.
+            </p>
+            <div className="mx-auto mt-8 grid max-w-2xl gap-3">
+              <CopyCard label="IBAN · PT" value={IBAN_PT} />
+              <CopyCard label="IBAN · LT" value={IBAN_LT} />
+            </div>
+          </Reveal>
+
+          {/* Opção 3 — MB Way */}
+          <Reveal className="mt-16">
+            <OptionHeading number={3} title="MB Way" />
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
+              Também podem contribuir diretamente através de MB Way.
+            </p>
+            <div className="mx-auto mt-8 grid max-w-2xl gap-3">
               <CopyCard label="MB Way — Isis" value={MBWAY_ISIS} />
               <CopyCard label="MB Way — Luís" value={MBWAY_LUIS} />
             </div>
-            <p className="mt-4 text-center text-xs text-muted-foreground">
-              Podem indicar o fundo na referência da transferência, mas não é obrigatório.
-            </p>
           </Reveal>
         </div>
       </section>
 
       {/* Localização */}
-      <section id="local" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <section id="local" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 md:py-28">
         <Reveal>
           <SectionTitle script="o" title="Local" />
           <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">

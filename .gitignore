@@ -30,3 +30,9 @@ dist-ssr
 !.env.example
 # Local Netlify folder
 .netlify
+
+# Ficheiros de trabalho / fontes (não fazem parte do site publicado)
+*.ai
+*.xlsx
+Screenshot*.png
+PHOTO-2026-07-30-17-46-37.jpg
