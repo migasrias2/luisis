@@ -34,6 +34,8 @@ export default function SiteHeader() {
             ))}
           </div>
 
+          {/* Botão "Plano de Mesas" escondido por agora (a página /plano-de-mesas
+              continua acessível por link direto / QR code). Para repor, descomentar:
           <Link
             to="/plano-de-mesas"
             className={`rounded-md border px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition-colors ${
@@ -44,6 +46,7 @@ export default function SiteHeader() {
           >
             Plano de Mesas
           </Link>
+          */}
         </div>
       </nav>
     </header>

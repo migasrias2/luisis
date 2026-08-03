@@ -4,7 +4,6 @@ import { toast } from "sonner";
 import SiteHeader from "@/components/SiteHeader";
 
 import heroCasal from "@/assets/wedding/hero-casal.jpg";
-import presente from "@/assets/wedding/presente.jpg";
 
 import fundoLuaDeMel from "@/assets/wedding/fundos/lua-de-mel.jpg";
 import fundoCasaNova from "@/assets/wedding/fundos/casa-nova.jpg";
@@ -217,9 +216,6 @@ function ContributeForm() {
       >
         {loading ? "A preparar o pagamento…" : "Contribuir Online"}
       </button>
-      <p className="mt-3 text-center text-xs text-muted-foreground">
-        Pagamento seguro processado pela Stripe.
-      </p>
     </div>
   );
 }
@@ -270,27 +266,21 @@ const Index = () => {
       {/* O nosso próximo capítulo */}
       <section
         id="proximo-capitulo"
-        className="relative flex min-h-[70vh] scroll-mt-20 items-center justify-center overflow-hidden"
+        className="flex scroll-mt-20 items-center justify-center bg-secondary/50 px-6 py-24 md:py-32"
       >
-        <img
-          src={presente}
-          alt="Estufa · Tazte Secret Spot ao pôr do sol"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <Reveal className="relative mx-auto max-w-2xl px-6 py-24 text-center text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <div className="flex items-baseline justify-center gap-3">
-            <span className="script text-white/90">o nosso</span>
+            <span className="script">o nosso</span>
             <h2 className="heading-caps text-3xl font-medium md:text-4xl">Próximo Capítulo</h2>
           </div>
-          <p className="mt-6 leading-relaxed text-white/90">
+          <p className="mt-6 leading-relaxed text-foreground/80">
             Antes de mais, queremos agradecer por fazerem parte de um dos dias mais marcantes das
             nossas vidas e por tornarem este dia ainda mais inesquecível.
           </p>
-          <p className="mt-4 leading-relaxed text-white/90">
+          <p className="mt-4 leading-relaxed text-foreground/80">
             A vossa presença é, sem dúvida, o maior presente que poderíamos receber.
           </p>
-          <p className="mt-4 leading-relaxed text-white/90">
+          <p className="mt-4 leading-relaxed text-foreground/80">
             Se, ainda assim, desejarem oferecer-nos uma lembrança, criámos uma lista de presentes
             para nos ajudar a dar os primeiros passos nesta nossa nova etapa.
           </p>
@@ -301,9 +291,6 @@ const Index = () => {
       <section id="fundos" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 md:py-28">
         <Reveal>
           <SectionTitle script="a nossa" title="Lista de Presentes" />
-          <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-            Para onde pode ir o vosso contributo
-          </p>
         </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FUNDS.map((fund) => (
