@@ -10,6 +10,7 @@ import fundoLuaDeMel from "@/assets/wedding/fundos/lua-de-mel.jpg";
 import fundoCasaNova from "@/assets/wedding/fundos/casa-nova.jpg";
 import fundoBrinde from "@/assets/wedding/fundos/brinde.jpg";
 import fundoExperiencia from "@/assets/wedding/fundos/experiencia-a-dois.jpg";
+import fundoAventuras from "@/assets/wedding/fundos/aventuras.jpg";
 
 /* Dados de pagamento manual */
 const IBAN_PT = "PT50 0033 0000 4549 6520 0340 5";
@@ -20,26 +21,29 @@ const MBWAY_LUIS = "912 338 222";
 const FUNDS = [
   {
     name: "Lua de Mel",
-    description:
-      "A nossa lua de mel será na Turquia. O vosso contributo irá ajudar-nos a tornar esta viagem ainda mais especial e criar memórias inesquecíveis.",
+    description: "Um momento único que ficará para sempre nas nossas memórias.",
     image: fundoLuaDeMel,
   },
   {
     name: "Casa Nova",
-    description:
-      "Um contributo para transformar a nossa casa num verdadeiro lar, ajudando na mobília, detalhes e tudo aquilo que fará parte da nossa nova vida.",
+    description: "Uma ajuda para transformar o nosso lar num espaço verdadeiramente nosso.",
     image: fundoCasaNova,
   },
   {
     name: "Experiências a Dois",
     description:
-      "Jantares, viagens, passeios e pequenos momentos que vamos guardar para sempre.",
+      "Jantares, passeios e pequenos momentos que tornam a vida a dois ainda mais especial.",
     image: fundoExperiencia,
   },
   {
-    name: "Brindar ao Futuro",
+    name: "Explorar o Mundo",
     description:
-      "Para quem preferir contribuir sem destino certo. Um gesto que nos acompanhará nesta nova fase e em todos os momentos especiais que ainda vamos viver juntos.",
+      "Uma das nossas maiores paixões. Descobrir novos lugares, conhecer diferentes culturas e saborear novas gastronomias.",
+    image: fundoAventuras,
+  },
+  {
+    name: "Um Brinde ao Nosso Futuro",
+    description: "Todos os grandes começos merecem ser celebrados.",
     image: fundoBrinde,
   },
 ];
@@ -280,9 +284,15 @@ const Index = () => {
             <h2 className="heading-caps text-3xl font-medium md:text-4xl">Próximo Capítulo</h2>
           </div>
           <p className="mt-6 leading-relaxed text-white/90">
-            Decidimos continuar o resto do caminho a dois e começar uma nova fase juntos. Se
-            quiserem fazer parte deste capítulo, criámos algumas opções onde o vosso carinho poderá
-            ajudar-nos a criar novas memórias e construir o nosso futuro.
+            Antes de mais, queremos agradecer por fazerem parte de um dos dias mais marcantes das
+            nossas vidas e por tornarem este dia ainda mais inesquecível.
+          </p>
+          <p className="mt-4 leading-relaxed text-white/90">
+            A vossa presença é, sem dúvida, o maior presente que poderíamos receber.
+          </p>
+          <p className="mt-4 leading-relaxed text-white/90">
+            Se, ainda assim, desejarem oferecer-nos uma lembrança, criámos uma lista de presentes
+            para nos ajudar a dar os primeiros passos nesta nossa nova etapa.
           </p>
         </Reveal>
       </section>
@@ -290,7 +300,7 @@ const Index = () => {
       {/* Fundos */}
       <section id="fundos" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 md:py-28">
         <Reveal>
-          <SectionTitle script="os nossos" title="Fundos" />
+          <SectionTitle script="a nossa" title="Lista de Presentes" />
           <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
             Para onde pode ir o vosso contributo
           </p>
@@ -326,7 +336,8 @@ const Index = () => {
           <Reveal>
             <SectionTitle script="como" title="Contribuir" />
             <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-              Escolham a forma que for mais fácil — qualquer contributo é bem-vindo.
+              Qualquer contribuição, independentemente do seu valor, será recebida de coração cheio
+              e com uma enorme gratidão.
             </p>
           </Reveal>
 

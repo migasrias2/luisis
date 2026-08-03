@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 /* Secções da página inicial (âncoras) + a nova aba "Plano de Mesas" */
 const SECTIONS = [
   { id: "proximo-capitulo", label: "O Casal" },
-  { id: "fundos", label: "Fundos" },
+  { id: "fundos", label: "Presentes" },
   { id: "contribuir", label: "Contribuir" },
   { id: "local", label: "Local" },
 ];
