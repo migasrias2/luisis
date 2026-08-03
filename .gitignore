@@ -28,8 +28,8 @@ dist-ssr
 .env
 .env.*
 !.env.example
-# Local Netlify folder
-.netlify
+# Local Vercel folder
+.vercel
 
 # Ficheiros de trabalho / fontes (não fazem parte do site publicado)
 *.ai
