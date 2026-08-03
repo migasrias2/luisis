@@ -83,7 +83,7 @@ export default function SeatingPlan() {
 
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
         <div className="text-center">
-          <div className="flex items-baseline justify-center gap-3">
+          <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
             <span className="script">o nosso</span>
             <h1 className="heading-caps text-3xl font-medium md:text-4xl">Plano de Mesas</h1>
           </div>

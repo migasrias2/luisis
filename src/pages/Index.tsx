@@ -83,7 +83,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
 
 function SectionTitle({ script, title }: { script: string; title: string }) {
   return (
-    <div className="flex items-baseline justify-center gap-3">
+    <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
       <span className="script">{script}</span>
       <h2 className="heading-caps text-3xl md:text-4xl font-medium">{title}</h2>
     </div>
@@ -244,7 +244,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-background" />
         <div className="relative px-6 pb-24 pt-32 text-center text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.35)]">
           <Reveal>
-            <div className="mb-4 flex items-baseline justify-center gap-3">
+            <div className="mb-4 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
               <span className="script text-4xl text-white/90 md:text-5xl">o nosso</span>
               <span className="heading-caps text-4xl font-medium md:text-6xl">Casamento</span>
             </div>
@@ -269,7 +269,7 @@ const Index = () => {
         className="flex scroll-mt-20 items-center justify-center bg-secondary/50 px-6 py-24 md:py-32"
       >
         <Reveal className="mx-auto max-w-2xl text-center">
-          <div className="flex items-baseline justify-center gap-3">
+          <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
             <span className="script">o nosso</span>
             <h2 className="heading-caps text-3xl font-medium md:text-4xl">Próximo Capítulo</h2>
           </div>
