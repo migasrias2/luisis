@@ -400,6 +400,27 @@ const Index = () => {
         </Reveal>
       </section>
 
+      {/* Programa do dia */}
+      <section id="programa" className="scroll-mt-20 bg-secondary/50 px-6 py-20 md:py-28">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <SectionTitle script="o" title="Programa do Dia" />
+          <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3">
+            {[
+              { label: "Cerimónia", time: "15h00" },
+              { label: "Cocktail", time: "17h30" },
+              { label: "Jantar", time: "19h30" },
+            ].map((item) => (
+              <div key={item.label}>
+                <p className="heading-caps text-[11px] tracking-[0.3em] text-muted-foreground">
+                  {item.label}
+                </p>
+                <p className="mt-2 text-4xl font-light md:text-5xl">{item.time}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
       {/* Footer */}
       <footer className="px-6 py-16 text-center">
         <Reveal>

@@ -6,6 +6,7 @@ const SECTIONS = [
   { id: "fundos", label: "Presentes" },
   { id: "contribuir", label: "Contribuir" },
   { id: "local", label: "Local" },
+  { id: "programa", label: "Programa" },
 ];
 
 export default function SiteHeader() {
