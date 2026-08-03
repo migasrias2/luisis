@@ -332,8 +332,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={1} title="Contribuir Online" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Podem contribuir online de forma simples e segura através de Apple Pay, MB Way ou
-              cartão bancário.
+              Podem contribuir online através de Apple Pay, MB Way ou cartão bancário.
             </p>
             <div className="mt-8">
               <ContributeForm />
@@ -344,8 +343,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={2} title="Transferência Bancária" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Caso prefiram, podem contribuir através de transferência bancária para um dos
-              seguintes IBAN.
+              Podem contribuir através de transferência bancária para um dos seguintes IBAN.
             </p>
             <div className="mx-auto mt-8 grid max-w-2xl gap-3">
               <CopyCard label="IBAN · PT" value={IBAN_PT} />
@@ -357,7 +355,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={3} title="MB Way" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Também podem contribuir diretamente através de MB Way.
+              Podem contribuir através de MB Way para um dos seguintes contactos telefónicos.
             </p>
             <div className="mx-auto mt-8 grid max-w-2xl gap-3">
               <CopyCard label="MB Way — Isis" value={MBWAY_ISIS} />
@@ -403,8 +401,8 @@ const Index = () => {
       {/* Programa do dia */}
       <section id="programa" className="scroll-mt-20 bg-secondary/50 px-6 py-20 md:py-28">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <SectionTitle script="o" title="Programa do Dia" />
-          <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3">
+          <SectionTitle script="a nossa" title="Timeline" />
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {[
               { label: "Cerimónia", time: "15h00" },
               { label: "Cocktail", time: "17h30" },
@@ -414,7 +412,7 @@ const Index = () => {
                 <p className="heading-caps text-[11px] tracking-[0.3em] text-muted-foreground">
                   {item.label}
                 </p>
-                <p className="mt-2 text-4xl font-light md:text-5xl">{item.time}</p>
+                <p className="mt-2 text-lg font-light tracking-wide md:text-xl">{item.time}</p>
               </div>
             ))}
           </div>
