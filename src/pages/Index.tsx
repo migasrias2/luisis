@@ -25,7 +25,7 @@ const FUNDS = [
   },
   {
     name: "Casa Nova",
-    description: "Uma ajuda para transformar o nosso lar num espaço verdadeiramente nosso.",
+    description: "Para transformar o nosso lar num espaço verdadeiramente nosso.",
     image: fundoCasaNova,
   },
   {
@@ -324,7 +324,7 @@ const Index = () => {
             <SectionTitle script="como" title="Contribuir" />
             <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
               Qualquer contribuição, independentemente do seu valor, será recebida de coração cheio
-              e com uma enorme gratidão.
+              e com enorme gratidão.
             </p>
           </Reveal>
 
@@ -332,7 +332,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={1} title="Contribuir Online" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Podem contribuir online através de Apple Pay, MB Way ou cartão bancário.
+              Online através de Apple Pay, MB Way ou cartão bancário.
             </p>
             <div className="mt-8">
               <ContributeForm />
@@ -343,7 +343,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={2} title="Transferência Bancária" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Podem contribuir através de transferência bancária para um dos seguintes IBAN.
+              Através de transferência bancária para um dos seguintes IBANs.
             </p>
             <div className="mx-auto mt-8 grid max-w-2xl gap-3">
               <CopyCard label="IBAN · PT" value={IBAN_PT} />
@@ -355,7 +355,7 @@ const Index = () => {
           <Reveal className="mt-16">
             <OptionHeading number={3} title="MB Way" />
             <p className="mx-auto mt-3 max-w-xl text-center text-sm text-foreground/75">
-              Podem contribuir através de MB Way para um dos seguintes contactos telefónicos.
+              Através de MB Way para um dos seguintes contactos telefónicos.
             </p>
             <div className="mx-auto mt-8 grid max-w-2xl gap-3">
               <CopyCard label="MB Way — Isis" value={MBWAY_ISIS} />
