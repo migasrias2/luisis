@@ -387,12 +387,12 @@ const Index = () => {
           </div>
           <div className="mt-6 text-center">
             <a
-              href="https://www.google.com/maps/place/Estufa+-+Tazte+Secret+Spot/@38.7388913,-9.1887904,17z/data=!3m1!4b1!4m6!3m5!1s0xd1933617d815017:0x6db2d739047a3940!8m2!3d38.7388913!4d-9.1887904"
+              href="https://www.google.com/maps/dir/?api=1&destination=38.7388913%2C-9.1887904"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-md border border-foreground/30 px-6 py-3 text-xs uppercase tracking-[0.15em] transition-colors hover:bg-foreground hover:text-background"
             >
-              Abrir no Google Maps
+              Como Chegar (Google Maps)
             </a>
           </div>
         </Reveal>
@@ -409,10 +409,10 @@ const Index = () => {
               { label: "Jantar", time: "19h30" },
             ].map((item) => (
               <div key={item.label}>
-                <p className="heading-caps text-[11px] tracking-[0.3em] text-muted-foreground">
+                <p className="heading-caps text-xl font-medium tracking-[0.14em] md:text-2xl">
                   {item.label}
                 </p>
-                <p className="mt-2 text-lg font-light tracking-wide md:text-xl">{item.time}</p>
+                <p className="mt-2 text-base tracking-[0.2em] text-muted-foreground">{item.time}</p>
               </div>
             ))}
           </div>
