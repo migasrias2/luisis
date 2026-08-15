@@ -7,36 +7,38 @@ import planoMesas from "@/assets/wedding/plano-mesas.jpg";
    PLANO DE MESAS — Casamento Isis & Luís (15.08.2026)
 
    • Plano visual da sala: src/assets/wedding/plano-mesas.jpg
-   • Convidados de cada mesa: fonte = Convidados_Casamento.xlsx
+   • Convidados de cada mesa: fonte = Lista_Convidados_Mesas 14082026.csv (292 lugares)
    A pesquisa por nome ignora maiúsculas e acentos.
    ──────────────────────────────────────────────────────────── */
-type Table = { id: number; guests: string[] };
+type Table = { id: number; label?: string; guests: string[] };
 
 const TABLES: Table[] = [
-  { id: 1, guests: ["Rosa Costa", "Carlos Costa", "Nália Fonseca", "Francisco Fonseca", "Paulo Viana", "Elizabeth Bongo", "Alfredo Viana", "Carla Viana", "Rui Carmo", "Danila Batalha", "Hugo Batalha", "Alice Silva", "Daniel Gaspar"] },
-  { id: 2, guests: ["Victor Viana", "Maria José", "Rute Armada", "Rui Armada", "Fernanda Menezes", "Tatiana Fortes", "Isaac da Cunha", "Nuno Armada", "Katila Mendes", "Maurya Pereira", "José Inácio", "Wiam Idbouichou"] },
-  { id: 3, guests: ["Patrícia dos Santos", "Gilmar de Oliveira", "Jandira Santos", "Leandra Santos", "Beatriz Santos", "Wesa Faria", "Paula Viana", "António da Silva", "Stella Lagrifa", "Georgina Pedro", "Carlos Cohen", "Isabel Cohen"] },
-  { id: 4, guests: ["Afra Armada", "Luís Armada", "Alice Armada", "Manuel Sampaio", "Nara Armada", "Filomena Moreso", "Teresinha Armada", "João Pinto de Campos", "Regina Armada", "Marcelo Mendes", "Jurema Cardoso", "Yuri Cardoso"] },
-  { id: 5, guests: ["Luísa Félix", "Luísa - Acompanhante", "Maria do Carmo", "Odélia Costa", "António Costa", "Filomena Silva", "Pedro Silva", "Riquinho Miguel", "Susana Miguel", "Márcia Silva", "Camila Carvalho", "Arlindo Carvalho"] },
-  { id: 6, guests: ["Giovani Martins", "Teresa Martins", "Manassês Martins", "Isabel Passos", "Mário Passos", "Helvia Oliveira", "Marlene Pereira", "Geraldo de Carvalho", "Efraim Martins", "Eliane Martins", "Mónica Cruz", "Bruno Pereira"] },
-  { id: 7, guests: ["Mudumane", "Emanuel Madaleno", "Ligia Madaleno", "Luna Madaleno", "David Madaleno", "Ariete Faria", "Kwatchila Costa", "Edeline Costa", "Aldemiro da Conceição", "Aldemiro - Esposa", "Harolde Mendes", "Tadine Mendes"] },
-  { id: 8, guests: ["Paulo Armada", "Ana Armada", "Sandra Vilar", "Marco Vinhais", "Djamila Fortes", "Joao Silva", "Joao Silva - Esposa", "Nelson Armada", "Manuela Mota", "David Mota", "Samuel", "Jordana Leitao", "Fernando Armada", "Carla Henriques", "Ernesto Farinas", "Fabio Fortes"] },
-  { id: 9, guests: ["Hugo Luís", "Ilana Luís", "Nuno ou Edgar", "Nuno ou Edgar - Esposa", "Ademar Damião", "Hilay Carvalho", "Antonio Ferreira", "Walter Campos", "Walter - Esposa", "Zhair Din", "Sara Din", "Sónia Ferreira"] },
-  { id: 10, guests: ["Luyana Félix", "Joshua", "Radhija", "Ana Ramos", "Regina Félix", "Francisco Muambuenze", "Patrícia Félix", "Priscilla Lolo", "Djanira Félix", "Ulika Costa", "Omar Costa", "Joicebel Félix"] },
-  { id: 11, guests: ["Bruna Viana", "Rui Ferreira", "Yoanni Viana", "Kyami Costa", "Victória Viana", "Nathaly", "Jéssica Nicácio", "Leandro Nicácio", "Kayo", "Thaís", "Ericksson Viana", "Miriam Costa", "Adrien", "Ivanilson Viana", "Helga Viana", "Camila", "Micaela"] },
-  { id: 12, guests: ["Ivanilson Machado", "Cristina Machado", "Ederson Machado", "Walkiria Machado", "Canassy Chitas", "Adilia Chitas", "Sidney Ferreira", "Fábia Ferreira", "Gerson Sequeira", "Elizângela Sequeira", "Luís Costa", "Deborah Costa"] },
-  { id: 13, guests: ["Sónia Casimiro", "Leonel Casimiro", "Edna Casimiro", "Manuela Baptista", "Sérgio Baptista", "Daniela Casimiro", "Luyana Pacheco", "Manuela Casimiro", "Henrique Fonseca", "Jéssica Casimiro", "Pedro Macedo", "Malena", "Malena - Acompanhante", "Lineth Verdades", "Óscar Casimiro", "Susy"] },
-  { id: 14, guests: ["Guiomar Covilhã", "Higino Covilhã", "Luigi", "Isana Machado", "Flávio Martins", "Adozinda Cunha", "Teodorico Cunha", "Marcelo Pereira", "Ricardo Pereira", "Mónica Miranda", "Heyla Machado", "Iris"] },
-  { id: 15, guests: ["Luana Pacheco", "Maria Helena", "Inaara Virgi", "Hélio Nunes", "Tatiana Nunes", "Eddie Garcia", "Rebeca Cebolo", "Rafael Monteiro", "Rui George", "Márcio Mota", "Marcos Mota", "Renato de Sousa", "Katherine Joseane", "Divanilson Benge", "Péricles Joseph", "Nadine Bastos"] },
-  { id: 16, guests: ["André Armada", "Belén Talavante", "Raquel Armada", "Afonso Pires", "Roger Trindade", "Diego Trindade", "Tatiana Mineeva", "Lucas Armada"] },
-  { id: 17, guests: ["Chiara Armada", "Lueji Armada", "Aspen Doherty", "Jane", "Yara Armada", "Alexandre da Silva", "Ronaldo Carvalho", "Miguel Martins", "Darcio Mesquita", "Gerson Mesquita", "Rudi Mesquita"] },
-  { id: 18, guests: ["Kelvin Amaral", "Kelsio Van-dunem", "Céline Van-dunem", "Kelson Humberto", "Ruben Heineken", "Bruna Martins", "Márcio Veiga", "Jéssica Veiga", "Elton Beia", "Yannick Diogo", "Artemiza Martinez", "William Malheiro", "Luana Mateus", "Nuno Cartier", "Sarah Rossini"] },
-  { id: 19, guests: ["Érica Seguro", "Rui Seguro", "Christine Martins", "Guilherme Martins", "Débora Marques", "Tiago Moreira", "João Rama", "Suzana Vidal"] },
-  { id: 20, guests: ["Miguel Chantre", "Yara Karina", "Pietro Mandetta", "Jacqueline Costa", "Miguel Albuquerque", "Sílvia Colles", "Jorge da Cruz", "Yola Fernandes"] },
-  { id: 21, guests: ["Cindy Pires", "Sidney Cardoso", "Ariane David", "Hugo Renato", "Áurea Gouveia", "Márcia Fernandes", "Maroc Isata", "Sesita Isata", "Bruno Nunes", "Farida Canelas", "Bruna Pereira"] },
-  { id: 22, guests: ["Willy Guimarães", "Vanessa Guimarães", "Ruca Faria", "Xima Faria", "Beatriz Faria", "Dilson Silva", "Etianeth Almeida", "Eliana Lopes", "Eliana - António", "Nuno ou Edgar", "Nuno ou Edgar - Esposa"] },
-  { id: 23, guests: ["Rui Évora", "Maria Lopes", "Matthew Oly", "Alexandra Neto", "Daniela Beirão", "Bruna Dias", "Filipe Dias", "Catarina Terrinha", "Gabriela Costa", "Inmaculada Moreno"] },
-  { id: 24, guests: ["Kássia Silva", "Danilson Silva", "Carlos Aguiar", "Annette Benchimol", "Cynthia Faria", "Filipe Silva", "Rita Lima", "Ana Sofia Marinho", "Afonso Miala", "Raquel Domingos", "Mara Félix", "Eduardo Matos"] },
+  { id: -1, label: "Mesa dos Noivos", guests: ["Isis Armada", "Luís Armada"] },
+  { id: 0, guests: ["Victor Viana", "Rui Armada", "Fernanda Menezes", "Nuno Armada", "Katila Mendes", "Rute Armada", "Tatiana Fortes", "Isaac da Cunha", "Wiam Idbouichou", "José Inácio", "Maurya Pereira", "Maria José"] },
+  { id: 1, guests: ["Manuel Sampaio", "Alice Armada", "Nara Armada", "Afra Armada", "Luís Armada", "João Pinto de Campos", "Teresinha Armada", "Filomena Moreso", "Jurema Cardoso", "Regina Armada", "Marcelo Mendes"] },
+  { id: 2, guests: ["Gilmar de Oliveira", "Patrícia dos Santos", "Jandira Santos", "Leandra Santos", "Beatriz Santos", "Wesa Faria", "Paula Viana", "António da Silva", "Stella Lagrifa", "Isabel Cohen", "Carlos Cohen"] },
+  { id: 3, guests: ["Alexandre da Silva", "Jane", "Yara Armada", "Nelson Armada", "Djamila Fortes", "Fábio Fortes", "David Mota", "Samuel", "Manuela Mota", "Jordana Leitão"] },
+  { id: 4, guests: ["Mila Silva", "João Silva", "Ana Armada", "Paulo Armada", "Fernando Armada", "Carla Henriques", "Sandra Vilar", "Marco Vinhais", "Ernesto Farinas"] },
+  { id: 5, guests: ["António Costa", "Odélia Costa", "Miguel Catraio", "Edith Catraio", "Luísa Félix", "José Cameira", "Camila Carvalho", "Maria Vandsula", "Susana Miguel", "Riquinho Miguel", "Pedro Silva", "Filomena Silva"] },
+  { id: 6, guests: ["Rosa Costa", "Carlos Costa", "Paulo Viana", "Elizabeth Bongo", "Carla Viana", "Rui Carmo", "Danila Batalha", "Hugo Batalha", "Alice Silva", "Daniel Gaspar", "Catarino Pereira", "Isabel Gama"] },
+  { id: 7, guests: ["Marlene Pereira", "Geraldo de Carvalho", "Isabel Passos", "Mário Passos", "Giovani Martins", "Teresa Martins", "Manassês Martins", "Hélvia Oliveira", "Cláudia Sebastião", "Efraim Martins", "Eliane Martins"] },
+  { id: 8, guests: ["Luana Casimiro", "Erika Casimiro", "Pedro Macedo", "Filipe dos Santos", "Malena Magalhães", "Sónia Casimiro", "Flávia Gonçalves", "Sandra José", "Edna Casimiro", "Leonel Casimiro", "Óscar Casimiro", "Lineth Verdades", "Jessy Casimiro", "Manuela Casimiro", "Daniela Casimiro"] },
+  { id: 9, guests: ["Mudumane Boavida", "Emanuel Madaleno", "Ligia Madaleno", "David Madaleno", "Luna Madaleno", "Kwatchila Costa", "Edeline Costa", "Ariete Faria", "Sandra Santos", "Santiago Soares", "Aldemiro - Esposa", "Aldemiro da Conceição"] },
+  { id: 10, guests: ["Nathaly", "Victória Viana", "Bruna Viana", "Yoanni Viana", "Kyami Costa", "Adrien", "Miriam Costa", "Ericksson Viana", "Ivanilson Viana", "Helga Viana", "Camila", "Micaela", "Leandro Nicácio", "Jéssica Nicácio", "Kayo", "Thaís"] },
+  { id: 11, guests: ["Filipe Carvalho", "Rodrigo Carvalho", "Ruben Ferraz", "Djanira Félix", "Priscilla Lolo", "Joshua", "Radhija", "Luyana Félix", "Patrícia Félix", "Raul Vaz", "Yuri Paulo"] },
+  { id: 12, guests: ["Mónica Miranda", "Heyla Machado", "Marcelo Pereira", "Ricardo Pereira", "Adozinda Cunha", "Teodorico Cunha", "Higino Covilhã", "Guiomar Covilhã", "Luigi", "Isana Machado", "Flávio Martins"] },
+  { id: 13, guests: ["Eliana Lopes", "Tony Silva", "Íris Costa", "Ana Rafaela", "Ana Ramos", "Ricardo Ramos", "Beatriz Faria", "Xima Faria", "Ruca Faria"] },
+  { id: 14, guests: ["Sidney Ferreira", "Fábia Ferreira", "Canassy Chitas", "Adilia Chitas", "Gerson Sequeira", "Elizângela Sequeira", "Luís Costa", "Deborah Costa", "Ivanilson Machado", "Cristina Machado", "Ederson Machado", "Walkiria Machado"] },
+  { id: 15, guests: ["Edgar Oliveira", "Ana Oliveira", "António Ovídio", "Ademar Damião", "Walter Campos", "Walter - Acompanhante", "Zhair Din", "Sara Din", "Sónia Ferreira", "Dilson Silva", "Etianeth Almeida"] },
+  { id: 16, guests: ["Ruben Heineken", "Bruna Martins", "Jéssica Veiga", "Márcio Veiga", "Yannick Diogo", "Artemiza Martinez", "Kelvin Amaral", "Elton Beia", "Kelsio Van-Dúnem", "Céline Van-Dúnem", "Luana Mateus", "William Malheiro", "Nuno Tomás", "Sarah Rossini"] },
+  { id: 17, guests: ["Gabriella Costa", "Inmaculada Moreno", "Catarina Terrinha", "Henrique Fonseca", "Vânia Ribas", "Élison Bartolomeu", "Cristiano Jorge", "Dárcio Mesquita", "Gerson Mesquita", "Rudi Mesquita", "Ronaldo Carvalho"] },
+  { id: 18, guests: ["André Armada", "Belén Talavante", "Chiara Armada", "Lueji Armada", "Aspen Doherty", "Raquel Armada", "Afonso Pires", "Roger Trindade", "Diego Trindade", "Tatiana Mineeva", "Lucas Armada", "Miguel Martins"] },
+  { id: 19, guests: ["Renato de Sousa", "Katherine Joseane", "Rebeca Cebolo", "Eddie Garcia", "Rafael Monteiro", "Luana Pacheco", "Maria Helena", "Tatiana Nunes", "Teresa Lima", "Bruna Pereira", "Nadine Bastos", "Péricles Joseph", "Divanilson Benge", "Márcio Mota", "Marcos Mota", "Josué Nele"] },
+  { id: 20, guests: ["Carlos Aguiar", "Annette Benchimol", "Kássia Silva", "Danilson Silva", "Cynthia Faria", "Raquel Domingos", "Ana Sofia Marinho", "Afonso Miala", "Rita Lima"] },
+  { id: 21, guests: ["Rui Évora", "Matthew Oly", "Maria Lopes", "Alexandra Neto", "Daniela Beirão", "Bruna Dias", "Filipe Dias", "Jéssica Pinto", "Joicebel Félix", "Mara Félix", "Eduardo Matos", "Márcia Silva"] },
+  { id: 22, guests: ["Yola Fernandes", "Jorge da Cruz", "Sílvia Colles", "Miguel Chantre", "Yara Karina", "Pietro Mandetta", "Jacqueline Costa", "Miguel Albuquerque", "Walter da Costa", "Alberta João", "Mauro Carvalho", "Mauro - Acompanhante"] },
+  { id: 23, guests: ["Shawny de Sousa", "Kevin Jongschaap", "Daniel Sardinha", "Tatiana Casimiro", "Cindy Pires", "Sidney Cardoso", "Hugo Renato", "Áurea Gouveia", "Márcia Fernandes", "Maroc Isata", "Sesita Isata"] },
+  { id: 24, guests: ["Débora Marques", "Tiago Moreira", "João Rama", "Suzana Vidal", "Érica Seguro", "Rui Seguro", "Christine Martins", "Guilherme Martins"] },
 ];
 
 const stripCombiningMarks = new RegExp("[\\u0300-\\u036f]", "g");
@@ -46,7 +48,9 @@ function TableCard({ table, query }: { table: Table; query: string }) {
   return (
     <div className="rounded-md border border-border bg-card p-6">
       <div className="flex items-baseline justify-between gap-3">
-        <h2 className="heading-caps text-lg font-medium tracking-[0.12em]">Mesa {table.id}</h2>
+        <h2 className="heading-caps text-lg font-medium tracking-[0.12em]">
+          {table.label ?? `Mesa ${table.id}`}
+        </h2>
         <span className="shrink-0 text-xs text-muted-foreground">{table.guests.length} pessoas</span>
       </div>
       <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
