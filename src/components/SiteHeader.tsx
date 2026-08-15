@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-/* Secções da página inicial (âncoras) + a nova aba "Plano de Mesas" */
+/* Secções da página inicial (âncoras). O "Plano de Mesas" é uma página à parte
+   (/plano-de-mesas) e tem botão próprio, sempre visível, ao lado do menu. */
 const SECTIONS = [
   { id: "proximo-capitulo", label: "O Casal" },
   { id: "fundos", label: "Presentes" },
@@ -42,30 +43,30 @@ export default function SiteHeader() {
           ))}
         </div>
 
-        {/* Botão de menu — só em mobile */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          className="-mr-1 inline-flex items-center justify-center rounded-md p-2 text-foreground/80 transition-colors hover:text-foreground md:hidden"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/plano-de-mesas"
+            onClick={() => setOpen(false)}
+            className={`whitespace-nowrap rounded-md border px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition-colors ${
+              pathname === "/plano-de-mesas"
+                ? "border-foreground bg-foreground text-background"
+                : "border-foreground/30 hover:bg-foreground hover:text-background"
+            }`}
+          >
+            Plano de Mesas
+          </Link>
 
-        {/* Botão "Plano de Mesas" escondido por agora (a página /plano-de-mesas
-            continua acessível por link direto / QR code). Para repor, descomentar:
-        <Link
-          to="/plano-de-mesas"
-          className={`rounded-md border px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition-colors ${
-            pathname === "/plano-de-mesas"
-              ? "border-foreground bg-foreground text-background"
-              : "border-foreground/30 hover:bg-foreground hover:text-background"
-          }`}
-        >
-          Plano de Mesas
-        </Link>
-        */}
+          {/* Botão de menu — só em mobile */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            className="-mr-1 inline-flex items-center justify-center rounded-md p-2 text-foreground/80 transition-colors hover:text-foreground md:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Painel de navegação mobile */}
