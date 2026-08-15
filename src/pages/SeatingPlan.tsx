@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader";
 import planoMesas from "@/assets/wedding/plano-mesas.jpg";
-import salaMontada from "@/assets/wedding/sala-montada.jpg";
 
 /* ────────────────────────────────────────────────────────────
    PLANO DE MESAS — Casamento Isis & Luís (15.08.2026)
@@ -139,20 +138,6 @@ export default function SeatingPlan() {
           </a>
           <figcaption className="mt-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Toquem no plano para o verem em grande
-          </figcaption>
-        </figure>
-
-        {/* Foto de ambiente — a sala montada. Sem números: a disposição é
-            aproximada, quem procura a mesa usa o plano acima. */}
-        <figure className="mt-8">
-          <img
-            src={salaMontada}
-            alt="A Estufa montada para o copo de água"
-            loading="lazy"
-            className="w-full rounded-md border border-border"
-          />
-          <figcaption className="mt-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-            A sala à vossa espera
           </figcaption>
         </figure>
 
